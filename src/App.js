@@ -148,13 +148,13 @@ const multiplyMatrices = () => {
         <button className='calculate' onClick={multiplyMatrices}>Calculate</button>
          
           <div className="result">
-                       <h3>Result</h3>
+                       <h3 style={{marginBottom:"3%"}}>Result</h3>
 
                            <div className="endSection">
 
                              <h3> C </h3>
                              <h3>  =  </h3>
-                             <h3>  A X B </h3>
+                             <h3 style={{width:"7vw"}}>  A X B </h3>
                              <h3>  =  </h3>
 
                              
@@ -171,7 +171,7 @@ const multiplyMatrices = () => {
                   
                   <h3> X </h3>
 
-                 <div className="ouput atext">
+                 <div className="output atext">
                  {matrixB.map((row, i) => (
                     <div className='outputrow' key={i}>
                         {row.map((col, j) => (                         
