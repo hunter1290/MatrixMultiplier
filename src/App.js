@@ -74,19 +74,20 @@ const multiplyMatrices = () => {
           <h3 className="sizeHeading">Select the size</h3>
         <div className="sizea">
            <h3>A:</h3>
-           <input type="number" value={na} onChange={e=>{setNA(parseInt(e.target.value)); handleSizeChange(parseInt(e.target.value),ma,setMatrixA)}}/>
+           <input  min={1} type="number" value={na} onChange={e=>{setNA(parseInt(e.target.value)); handleSizeChange(parseInt(e.target.value),ma,setMatrixA)}}/>
              X
-           <input type="number" value={ma} onChange={e=>{setMA(parseInt(e.target.value)); handleSizeChange(na,parseInt(e.target.value),setMatrixA)}} />
+           <input  min={1} type="number" value={ma} onChange={e=>{setMA(parseInt(e.target.value)); handleSizeChange(na,parseInt(e.target.value),setMatrixA)}} />
         </div>
         <div className="sizeb">
            <h3>B:</h3>
-           <input type="number" value={nb} onChange={e=>{setNB(parseInt(e.target.value)); handleSizeChange(parseInt(e.target.value),mb,setMatrixB)}}/>
+           <input min={1} type="number" value={nb} onChange={e=>{setNB(parseInt(e.target.value)); handleSizeChange(parseInt(e.target.value),mb,setMatrixB)}}/>
              X
-           <input type="number" value={mb} onChange={e=>{setMB(parseInt(e.target.value)); handleSizeChange(nb,parseInt(e.target.value),setMatrixB)}} />
+           <input min={1} type="number" value={mb} onChange={e=>{setMB(parseInt(e.target.value)); handleSizeChange(nb,parseInt(e.target.value),setMatrixB)}} />
         </div>
   
        
         <div className="inputAB">
+
         <div className="matrixA">
           <h3>The First Matrix:</h3>
            <div className="inputA">
@@ -118,9 +119,10 @@ const multiplyMatrices = () => {
 
                   <div className="btext">
                   {matrixB.map((row, i) => (
-                    <div key={i}>
+                    <div key={i} className='dataRow'>
                         {row.map((col, j) => (
                             <input
+                             className='data'
                                 key={j}
                                 type="number"
                                 value={col}
@@ -156,7 +158,7 @@ const multiplyMatrices = () => {
                              <h3>  =  </h3>
 
                              
-                           <div className="ouput">
+                           <div className="ouput atext" >
                  {matrixA.map((row, i) => (
                     <div className='outputrow' key={i}>
                         {row.map((col, j) => (                         
@@ -169,7 +171,7 @@ const multiplyMatrices = () => {
                   
                   <h3> X </h3>
 
-                 <div className="ouput">
+                 <div className="ouput atext">
                  {matrixB.map((row, i) => (
                     <div className='outputrow' key={i}>
                         {row.map((col, j) => (                         
@@ -183,14 +185,14 @@ const multiplyMatrices = () => {
                   <h3> = </h3>
 
 
-                 <div className="ouput">
-                 {finalMatrix&&finalMatrix.map((row, i) => (
+                 <div className="ouput atext">
+                 {finalMatrix?finalMatrix.map((row, i) => (
                     <div className='outputrow' key={i}>
                         {row.map((col, j) => (                         
                             <div key={j}>{col}</div>
                         ))}
                     </div>
-                ))
+                )):<>0</>
                 }
                  </div>
 

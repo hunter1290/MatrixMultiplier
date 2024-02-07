@@ -41,18 +41,20 @@ box-sizing: border-box;
   align-items: center;
   flex-wrap: wrap;
 }
-
 .data{
-
+  width: 4vw;
 }
-
 .dataRow{
-
+ width: max-content;
 }
+
 .atext,.btext{
-
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  width: max-content;
+  padding: 3%;
+  border-radius: 15px;
 }
-
 
 .calculate{
   margin-top: 1%;
@@ -81,6 +83,7 @@ font-size: 18px;
 
 
 .output{
+
   padding: 2%;
   display: flex;
   flex-direction: column;
