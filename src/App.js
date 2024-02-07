@@ -11,6 +11,7 @@ function App() {
   const [matrixA, setMatrixA] = useState(Array.from({ length: na }, () => Array.from({ length: ma }, () => 0)));
   const [matrixB, setMatrixB] = useState(Array.from({ length: nb }, () => Array.from({ length: mb }, () => 0)));
   const [result, setResult] = useState("");
+  const [finalMatrix,setFinalMatrix] = useState()
   
    
   const handleSizeChange = (n,m,setMatrix) => {
@@ -44,19 +45,21 @@ const multiplyMatrices = () => {
   let resultMatrix = [];
   for (let i = 0; i < na; i++) {
       resultMatrix[i] = [];
-      for (let j = 0; j < nb; j++) {
+      for (let j = 0; j < mb; j++) {
           let sum = 0;
           for (let k = 0; k < ma; k++) {
-              sum += matrixA[i][k] * matrixB[k][j];
+            sum += matrixA[i][k] * matrixB[k][j];
           }
           resultMatrix[i][j] = sum;
+        }
       }
-  }
-
-  // Set result
-  setResult(resultMatrix.map(row => row.join(', ')).join('\n'));
-  // console.log(matrixA);
-  // console.log(matrixB)
+      
+      // Set result
+      setResult(resultMatrix.map(row => row.join(', ')).join('\n'));
+      setFinalMatrix(resultMatrix)
+      console.log(result)
+      console.log(matrixA);
+  console.log(matrixB)
 };
    
 
@@ -89,10 +92,12 @@ const multiplyMatrices = () => {
            <div className="inputA">
              <h4>A:</h4>
 
+             <div className="atext">
              {matrixA.map((row, i) => (
-                    <div key={i}>
+                    <div key={i} className='dataRow'>
                         {row.map((col, j) => (
                             <input
+                               className='data'
                                 key={j}
                                 type="number"
                                 value={col}
@@ -101,6 +106,7 @@ const multiplyMatrices = () => {
                         ))}
                     </div>
                 ))}
+             </div>
               
            </div>
          </div>
@@ -110,7 +116,8 @@ const multiplyMatrices = () => {
            <div className="inputB">
              <h4>B:</h4>
 
-             {matrixB.map((row, i) => (
+                  <div className="btext">
+                  {matrixB.map((row, i) => (
                     <div key={i}>
                         {row.map((col, j) => (
                             <input
@@ -123,6 +130,7 @@ const multiplyMatrices = () => {
                     </div>
                 ))
                 }
+                  </div>
              
            </div>
          </div>
@@ -139,7 +147,56 @@ const multiplyMatrices = () => {
          
           <div className="result">
                        <h3>Result</h3>
-                <textarea className='resultMatrix' value={result} readOnly rows="3" cols="20"></textarea>   
+
+                           <div className="endSection">
+
+                             <h3> C </h3>
+                             <h3>  =  </h3>
+                             <h3>  A X B </h3>
+                             <h3>  =  </h3>
+
+                             
+                           <div className="ouput">
+                 {matrixA.map((row, i) => (
+                    <div className='outputrow' key={i}>
+                        {row.map((col, j) => (                         
+                            <div key={j}>{col}</div>
+                        ))}
+                    </div>
+                ))
+                }
+                 </div>
+                  
+                  <h3> X </h3>
+
+                 <div className="ouput">
+                 {matrixB.map((row, i) => (
+                    <div className='outputrow' key={i}>
+                        {row.map((col, j) => (                         
+                            <div key={j}>{col}</div>
+                        ))}
+                    </div>
+                ))
+                }
+                 </div>
+
+                  <h3> = </h3>
+
+
+                 <div className="ouput">
+                 {finalMatrix&&finalMatrix.map((row, i) => (
+                    <div className='outputrow' key={i}>
+                        {row.map((col, j) => (                         
+                            <div key={j}>{col}</div>
+                        ))}
+                    </div>
+                ))
+                }
+                 </div>
+
+                            </div> 
+                  
+
                  </div>
     </div>
   )
