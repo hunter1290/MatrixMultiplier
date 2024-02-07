@@ -2,16 +2,22 @@
 padding: 0;
 margin: 0;
 box-sizing: border-box;
+text-align: center;
+
 }
 .main{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(216, 214, 214);
+  height: 100vh;
+  overflow-x: hidden;
 }
 .heading
 {
   text-align: center;
+  
 }
 
 .dataInput{
@@ -20,6 +26,7 @@ box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 3%;
   }
   .sizea,.sizeb{
     padding-top: 2%;
