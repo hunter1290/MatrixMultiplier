@@ -40,6 +40,10 @@ const multiplyMatrices = () => {
   if(nb!==ma)
   {
     alert("wrong dimension pair entered");
+    setNA(1);
+    setMA(1);
+    setNB(1);
+    setMB(1);
   }
 
   let resultMatrix = [];
